@@ -24,7 +24,7 @@
   },
   "production": {
     "energy": 3000,
-    "metal": 0
+    "metal": 1
   },
   "storage": {
     "energy": 20000,
