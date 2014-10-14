@@ -101,5 +101,6 @@
       ],
       "debug": false
     }
-  ]
+  ],
+  "wreckage_health_frac": 1
 }

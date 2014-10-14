@@ -66,9 +66,17 @@ module.exports = function(grunt) {
           'pa/units/sea/**/base_*.json'
         ],
         process: function(spec) {
-          if (spec.wreckage_health_frac != undefined) {
-            spec.wreckage_health_frac = 1
-          }
+          spec.wreckage_health_frac = 1
+        }
+      },
+      commander: {
+        targets: [
+          'pa/units/commanders/base_commander/base_commander.json'
+        ],
+        process: function(spec) {
+          spec.wreckage_health_frac = 1
+          spec.production.metal = 0
+          spec.storage.metal = 2000
         }
       }
     }
