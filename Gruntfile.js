@@ -87,6 +87,46 @@ module.exports = function(grunt) {
         process: function(spec) {
           spec.production.metal = 1
         }
+      },
+      base_feature: {
+        targets: [
+          'pa/terrain/generic/base_feature.json'
+        ],
+        process: function(spec) {
+          spec.reclaimable = true
+        }
+      },
+      control_point: { // oh dear, that would have been amusing...
+        targets: [
+          'pa/effects/features/control_point_01.json'
+        ],
+        process: function(spec) {
+          spec.reclaimable = false
+        }
+      },
+      rocks: {
+        targets: [
+          'pa/terrain/*/features/base*rock*.json'
+        ],
+        process: function(spec) {
+          spec.metal_value = 100
+        }
+      },
+      metal: {
+        targets: [
+          'pa/terrain/metal/features/base_metal_feature.json'
+        ],
+        process: function(spec) {
+          spec.metal_value = 500
+        }
+      },
+      spot: {
+        targets: [
+          'pa/terrain/generic/base_metal.json'
+        ],
+        process: function(spec) {
+          spec.metal_value = 10000
+        }
       }
     }
   });

@@ -1,0 +1,9 @@
+{
+  "base_spec": "/pa/terrain/generic/base_feature.json",
+  "placement_size": [
+    20,
+    16,
+    27
+  ],
+  "metal_value": 10000
+}
