@@ -1,11 +1,16 @@
 # Junkyard Wars
 
-All metal comes via reclaim.
+Most metal comes via reclaim.  All units leave wrecks.  All features are reclaimable (rocks, trees, random metal bits on metal planets)  Metal extractors produce 1 metal; possibly useful but not enough by itself.
 
-## Features
+## Planned Features
 
-- Rainbows
-- Unicorns
+I'd like to review the role of combat fabs - auto-repair can actually be a problem when you are trying to reclaim things, and possibly turn metal extractors into reclaim towers.
+
+## Trivia
+
+- The metal_value in features doesn't seem to work.  Empirically, features return two ticks (2/10) of the fabricator's build rate.
+- Features must be damageable to be reclaimable.
+- The commander produces 1 metal to avoid a bug where you can't reclaim with zero metal income, zero metal in storage, and a metal demand.
 
 ## Development
 
@@ -15,10 +20,9 @@ PA will upload **all files** in the mod directory, including `node_modules` and 
 
 ### Available Tasks
 
-- copy:unitFiles - copy json files into the mod, with optional filename regexp
 - copy:build - copy build.js into the mod
 - copy:mod - copy the mod files into server_mods
-- proc:health - process unit files; set up for double health as an example.  Expectation is that several proc:X tasks will me made.
+- proc - copy vanilla unit files, process them, and write into mod.  Number of subtasks but usually run together.
 - jsonlint - lint all the mod json files
 - json_schema - partial validation of mod json files format using schema by exterminans https://forums.uberent.com/threads/wip-units-ammo-and-tools-json-validation-schema.60451/
-- default: json_schema, jsonlint
+- default: proc, json_schema, jsonlint, copy:mod
