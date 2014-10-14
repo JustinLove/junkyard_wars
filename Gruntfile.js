@@ -76,7 +76,7 @@ module.exports = function(grunt) {
         process: function(spec) {
           spec.wreckage_health_frac = 1
           spec.production.metal = 0
-          spec.storage.metal = 2000
+          spec.storage.metal = 5000
         }
       },
       mex: {

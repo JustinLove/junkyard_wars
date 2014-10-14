@@ -28,7 +28,7 @@
   },
   "storage": {
     "energy": 20000,
-    "metal": 2000
+    "metal": 5000
   },
   "unit_types": [
     "UNITTYPE_Commander",
