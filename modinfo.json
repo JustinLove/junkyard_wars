@@ -1,0 +1,13 @@
+{
+  "author": "wondible",
+  "build": "73823",
+  "context": "server",
+  "date": "2014/10/13",
+  "description": "All metal comes via reclaim.",
+  "display_name": "Junkyard Wars",
+  "forum": null,
+  "identifier": "com.wondible.pa.junkyard_wars",
+  "signature": "not yet implemented",
+  "version": "0.1.0"
+}
+
