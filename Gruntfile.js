@@ -94,6 +94,7 @@ module.exports = function(grunt) {
         ],
         process: function(spec) {
           spec.reclaimable = true
+          spec.damageable = true // required for reclaim
         }
       },
       control_point: { // oh dear, that would have been amusing...
@@ -102,30 +103,16 @@ module.exports = function(grunt) {
         ],
         process: function(spec) {
           spec.reclaimable = false
+          spec.damageable = false
         }
       },
-      rocks: {
-        targets: [
-          'pa/terrain/*/features/base*rock*.json'
-        ],
-        process: function(spec) {
-          spec.metal_value = 100
-        }
-      },
-      metal: {
-        targets: [
-          'pa/terrain/metal/features/base_metal_feature.json'
-        ],
-        process: function(spec) {
-          spec.metal_value = 500
-        }
-      },
-      spot: {
+      spot: { // can't set the reclaim value, so keep it buildable
         targets: [
           'pa/terrain/generic/base_metal.json'
         ],
         process: function(spec) {
-          spec.metal_value = 10000
+          spec.reclaimable = false
+          spec.damageable = false
         }
       }
     }

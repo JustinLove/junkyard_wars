@@ -3,5 +3,5 @@
   "metal_value": 25,
   "metal_rate": 0,
   "reclaimable": true,
-  "damageable": false
+  "damageable": true
 }

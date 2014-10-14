@@ -12,5 +12,6 @@
   "feature_types": [
     "ControlPoint"
   ],
-  "reclaimable": false
+  "reclaimable": false,
+  "damageable": false
 }
