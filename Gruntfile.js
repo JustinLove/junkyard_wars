@@ -78,6 +78,15 @@ module.exports = function(grunt) {
           spec.production.metal = 0
           spec.storage.metal = 2000
         }
+      },
+      mex: {
+        targets: [
+          'pa/units/land/metal_extractor/metal_extractor.json',
+          'pa/units/land/metal_extractor_adv/metal_extractor_adv.json'
+        ],
+        process: function(spec) {
+          spec.production.metal = 1
+        }
       }
     }
   });
