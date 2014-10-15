@@ -1,0 +1,6 @@
+{
+  "base_spec": "/pa/terrain/jungle/features/base_jungle_rock.json",
+  "model": {
+    "filename": "/pa/terrain/jungle/fbx/jungle_rock_12.papa"
+  }
+}

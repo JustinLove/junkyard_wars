@@ -1,0 +1,8 @@
+{
+  "base_spec": "/pa/terrain/jungle/features/base_jungle_fern_group.json",
+  "model": {
+    "filename": "/pa/terrain/jungle/fbx/jungle_fern_group_06.papa"
+  },
+  "max_health": 10,
+  "damageable": true
+}

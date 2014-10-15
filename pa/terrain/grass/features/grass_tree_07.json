@@ -1,0 +1,8 @@
+{
+  "base_spec": "/pa/terrain/grass/features/base_grass_tree.json",
+  "model": {
+    "filename": "/pa/terrain/grass/fbx/grass_tree_07.papa"
+  },
+  "max_health": 10,
+  "damageable": true
+}

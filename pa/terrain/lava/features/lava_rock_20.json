@@ -1,0 +1,6 @@
+{
+  "base_spec": "/pa/terrain/lava/features/base_lava_rock.json",
+  "model": {
+    "filename": "/pa/terrain/lava/fbx/lava_rock_20.papa"
+  }
+}

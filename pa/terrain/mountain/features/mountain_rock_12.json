@@ -1,0 +1,6 @@
+{
+  "base_spec": "/pa/terrain/mountain/features/base_mountain_rock.json",
+  "model": {
+    "filename": "/pa/terrain/mountain/fbx/mountain_rock_12.papa"
+  }
+}

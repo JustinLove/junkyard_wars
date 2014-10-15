@@ -1,0 +1,6 @@
+{
+  "base_spec": "/pa/terrain/desert/features/base_desert_rock_group.json",
+  "model": {
+    "filename": "/pa/terrain/desert/fbx/desert_rock_group_02.papa"
+  }
+}

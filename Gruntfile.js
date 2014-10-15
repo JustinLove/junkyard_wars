@@ -37,6 +37,8 @@ module.exports = function(grunt) {
     jsonlint: {
       all: {
         src: [
+          'pa/effects/**/*.json',
+          'pa/terrain/**/*.json',
           'pa/ammo/**/*.json',
           'pa/tools/**/*.json',
           'pa/units/**/*.json'
@@ -47,6 +49,8 @@ module.exports = function(grunt) {
       all: {
         files: {
           'lib/schema.json': [
+            'pa/effects/**/*.json',
+            'pa/terrain/**/*.json',
             'pa/ammo/**/*.json',
             'pa/tools/**/*.json',
             'pa/units/**/*.json'
@@ -121,24 +125,21 @@ module.exports = function(grunt) {
           spec.damageable = true // required for reclaim
         }
       },
-      control_point: { // oh dear, that would have been amusing...
+      features: { // these just have to exist in the mod to pick up the base changes
         targets: [
-          'pa/effects/features/control_point_01.json'
-        ],
-        process: function(spec) {
-          spec.reclaimable = false
-          spec.damageable = false
-        }
+          'pa/terrain/*/features/*.json'
+        ]
       },
-      spot: { // can't set the reclaim value, so keep it buildable
+      special_points: { // oh dear, that would have been amusing...
         targets: [
+          'pa/effects/features/control_point_01.json',
           'pa/terrain/generic/base_metal.json'
         ],
         process: function(spec) {
           spec.reclaimable = false
           spec.damageable = false
         }
-      }
+      },
     }
   });
 

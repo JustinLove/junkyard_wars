@@ -1,0 +1,6 @@
+{
+  "base_spec": "/pa/terrain/ice/features/base_ice_floater.json",
+  "model": {
+    "filename": "/pa/terrain/ice/fbx/ice_floater_06.papa"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "base_spec": "/pa/terrain/grass/features/base_grass_rock.json",
+  "model": {
+    "filename": "/pa/terrain/grass/fbx/grass_rock_12.papa"
+  }
+}

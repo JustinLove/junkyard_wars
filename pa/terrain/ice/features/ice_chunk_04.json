@@ -1,0 +1,6 @@
+{
+  "base_spec": "/pa/terrain/ice/features/base_ice_chunk.json",
+  "model": {
+    "filename": "/pa/terrain/ice/fbx/ice_chunk_04.papa"
+  }
+}

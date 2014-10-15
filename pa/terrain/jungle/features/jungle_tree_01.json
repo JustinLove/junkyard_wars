@@ -1,0 +1,8 @@
+{
+  "base_spec": "/pa/terrain/jungle/features/base_jungle_tree.json",
+  "model": {
+    "filename": "/pa/terrain/jungle/fbx/jungle_tree_01.papa"
+  },
+  "max_health": 10,
+  "damageable": true
+}
