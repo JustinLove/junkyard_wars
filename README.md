@@ -1,6 +1,11 @@
 # Junkyard Wars
 
-Most metal comes via reclaim.  All units leave wrecks.  All features are reclaimable (rocks, trees, random metal bits on metal planets)  Metal extractors produce 1 metal; possibly useful but not enough by itself.
+Most metal comes via reclaim.
+
+- All units leave wrecks.
+- All features are reclaimable (rocks, trees, random metal bits on metal planets)
+- Metal extractors produce 1 metal; possibly useful but not enough by itself
+- Basic Combat Fab is the Junkyard Dog - a cheap scavenger that can also build mex.
 
 ## Planned Features
 
@@ -11,6 +16,8 @@ I'd like to review the role of combat fabs - auto-repair can actually be a probl
 - The metal_value in features doesn't seem to work.  Empirically, features return two ticks (2/10) of the fabricator's build rate.
 - Features must be damageable to be reclaimable.
 - The commander produces 1 metal to avoid a bug where you can't reclaim with zero metal income, zero metal in storage, and a metal demand.
+- Reclaiming a unit takes half the metal killing it, and the other half in wreckage - wreckage can never be a closed economy, even discounting weapon damage.
+- If a metal spot is reclaimed, the strategic icon stays, but you can't build on it anymore (unless you're the AI)
 
 ## Development
 
