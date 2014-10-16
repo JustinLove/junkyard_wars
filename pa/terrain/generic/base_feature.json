@@ -1,6 +1,6 @@
 {
-  "max_health": 25,
-  "metal_value": 25,
+  "max_health": 10,
+  "metal_value": 500,
   "metal_rate": 0,
   "reclaimable": true,
   "damageable": true

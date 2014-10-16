@@ -3,8 +3,9 @@
 Most metal comes via reclaim.
 
 - All units leave wrecks.
-- All features are reclaimable (rocks, trees, random metal bits on metal planets)
-- Metal extractors produce 1 metal; possibly useful but not enough by itself
+- All features are reclaimable (trees < rocks < random metal bits on metal planets)
+- Metal spots are reclaimable for signifcant but finite metal
+- Metal extractors have been thrown into limbo by above change
 - Basic Combat Fab is the Junkyard Dog - a cheap scavenger that can also build mex.
 
 ## Planned Features
@@ -13,11 +14,13 @@ I'd like to review the role of combat fabs - auto-repair can actually be a probl
 
 ## Trivia
 
-- The metal_value in features doesn't seem to work.  Empirically, features return two ticks (2/10) of the fabricator's build rate.
+- There are lots of rounding or overshoot errors in the economy, but nobody notices in a streaming economy.
+- It's possible to set feature reclaim value, it's just... odd.  You can get (metal_value/max_health)/10, plus some error based on the build power used.  In the typical case, a feature is either 25/25/10 or 25/10/10 for trees, basically 1 metal if you round up generously, and the fabber error dominates.
 - Features must be damageable to be reclaimable.
+- If a metal spot is reclaimed, the strategic icon stays, but you can't build on it anymore (unless you're the AI)
+- You must shadow (at least certain) features for changes in base_feature take effect.
 - The commander produces 1 metal to avoid a bug where you can't reclaim with zero metal income, zero metal in storage, and a metal demand.
 - Reclaiming a unit takes half the metal killing it, and the other half in wreckage - wreckage can never be a closed economy, even discounting weapon damage.
-- If a metal spot is reclaimed, the strategic icon stays, but you can't build on it anymore (unless you're the AI)
 
 ## Development
 

@@ -100,10 +100,10 @@ module.exports = function(grunt) {
           'pa/units/land/fabrication_bot_combat/fabrication_bot_combat_build_arm.json'
         ],
         process: function(spec) {
-          spec.auto_repair = false
+          delete spec.auto_repair
           spec.construction_demand = {
             energy: 200,
-            metal: 60
+            metal: 10
           }
         }
       },
@@ -121,6 +121,8 @@ module.exports = function(grunt) {
           'pa/terrain/generic/base_feature.json'
         ],
         process: function(spec) {
+          spec.max_health = 10 // changing this is easier than all the trees
+          spec.metal_value = 5 * spec.max_health * 10
           spec.reclaimable = true
           spec.damageable = true // required for reclaim
         }
@@ -130,14 +132,40 @@ module.exports = function(grunt) {
           'pa/terrain/*/features/*.json'
         ]
       },
+      rocks: {
+        targets: [
+          'pa/terrain/*/features/base*rock*.json'
+        ],
+        process: function(spec) {
+          spec.max_health = 25
+          spec.metal_value = 10 * spec.max_health * 10
+        }
+      },
+      metal: {
+        targets: [
+          'pa/terrain/metal/features/base_metal_feature.json'
+        ],
+        process: function(spec) {
+          spec.max_health = 100
+          spec.metal_value = 50 * spec.max_health * 10
+        }
+      },
       special_points: { // oh dear, that would have been amusing...
         targets: [
           'pa/effects/features/control_point_01.json',
-          'pa/terrain/generic/base_metal.json'
         ],
         process: function(spec) {
           spec.reclaimable = false
           spec.damageable = false
+        }
+      },
+      metal_spots: {
+        targets: [
+          'pa/terrain/generic/base_metal.json'
+        ],
+        process: function(spec) {
+          spec.max_health = 1000
+          spec.metal_value = 2000 * spec.max_health * 10
         }
       },
     }

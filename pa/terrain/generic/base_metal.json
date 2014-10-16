@@ -5,6 +5,6 @@
     16,
     27
   ],
-  "reclaimable": false,
-  "damageable": false
+  "max_health": 1000,
+  "metal_value": 20000000
 }

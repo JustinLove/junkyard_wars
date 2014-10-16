@@ -3,9 +3,8 @@
   "yaw_rate": 360,
   "pitch_rate": 360,
   "max_range": 40,
-  "auto_repair": false,
   "construction_demand": {
     "energy": 200,
-    "metal": 60
+    "metal": 10
   }
 }
