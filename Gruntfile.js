@@ -182,17 +182,23 @@ module.exports = function(grunt) {
           delete mex.atrophy_rate
           delete mex.atrophy_cool_down
           mex.area_build_separation = 20
-          mex.display_name = "Reclaim Tower"
-          mex.description = "Can be ordered to reclaim (or repair) nearby, and build more towers"
+          mex.description = "Can be ordered to reclaim (or repair) with a high-power, short-range lathe"
           delete mex.feature_requirements
           mex.mesh_bounds = ld.mesh_bounds
           mex.model = ld.model
           delete mex.production
           delete mex.replaceable_units
           mex.tools = ld.tools
-          mex.tools[0].spec_id = cf.tools[0].spec_id
-          mex.buildable_types = "MetalProduction & Basic"
+          mex.tools[0].spec_id = '/pa/units/land/metal_extractor/metal_extractor_build_arm.json'
+          mex.buildable_types = "MetalProduction"
           mex.can_only_assist_with_buildable_items = true
+          mex.recon.observer.items.push({
+            "channel": "radar", 
+            "layer": "surface", 
+            "radius": 20, 
+            "shape": "capsule", 
+            "uses_energy": false
+          })
           mex.unit_types[0] = 'UNITTYPE_Mobile' // replacing structure
           mex.navigation = {
             "acceleration": 0,
@@ -211,6 +217,85 @@ module.exports = function(grunt) {
           mex.audio.loops = {build: cf.audio.loops.build}
           mex.fx_offsets = cf.fx_offsets
           return mex
+        }
+      },
+      mex_tool: {
+        src: [
+          'pa/units/land/fabrication_bot_combat/fabrication_bot_combat_build_arm.json'
+        ],
+        cwd: media,
+        dest: 'pa/units/land/metal_extractor/metal_extractor_build_arm.json',
+        process: function(spec) {
+          spec.construction_demand.metal = 50
+          spec.construction_demand.energy = 1000
+          spec.max_range = 20
+          return spec
+        }
+      },
+      adv_mex: {
+        src: [
+          'pa/units/land/metal_extractor_adv/metal_extractor_adv.json',
+          'pa/units/land/laser_defense/laser_defense.json',
+          'pa/units/land/fabrication_bot_adv/fabrication_bot_adv.json',
+          'pa/units/land/fabrication_bot_combat/fabrication_bot_combat.json'
+        ],
+        cwd: media,
+        dest: 'pa/units/land/metal_extractor_adv/metal_extractor_adv.json',
+        process: function(mex, ld, fba, cf) {
+          delete mex.atrophy_rate
+          delete mex.atrophy_cool_down
+          mex.build_metal_cost = 300
+          mex.max_health = 1000
+          mex.area_build_separation = 200
+          mex.display_name = "Reclaim Tower"
+          mex.description = "Can be ordered to reclaim (or repair) with a low-power, long-range lathe"
+          delete mex.feature_requirements
+          mex.mesh_bounds = ld.mesh_bounds
+          mex.model = ld.model
+          delete mex.production
+          delete mex.replaceable_units
+          mex.tools = ld.tools
+          mex.tools[0].spec_id = '/pa/units/land/metal_extractor_adv/metal_extractor_adv_build_arm.json'
+          mex.buildable_types = "MetalProduction"
+          mex.can_only_assist_with_buildable_items = true
+          mex.recon.observer.items.push({
+            "channel": "radar", 
+            "layer": "surface", 
+            "radius": 100, 
+            "shape": "capsule", 
+            "uses_energy": false
+          })
+          mex.unit_types[0] = 'UNITTYPE_Mobile' // replacing structure
+          mex.navigation = {
+            "acceleration": 0,
+            "brake": 0,
+            "move_speed": 0,
+            "turn_in_place": false,
+            "turn_speed": 0,
+            "type": "amphibious"
+          }
+          mex.command_caps = [
+            "ORDER_Build",
+            "ORDER_Reclaim",
+            "ORDER_Repair",
+            "ORDER_Assist"
+          ]
+          mex.audio.loops = {build: cf.audio.loops.build}
+          mex.fx_offsets = fba.fx_offsets
+          return mex
+        }
+      },
+      mex_tool: {
+        src: [
+          'pa/units/land/fabrication_bot_combat/fabrication_bot_combat_build_arm.json'
+        ],
+        cwd: media,
+        dest: 'pa/units/land/metal_extractor_adv/metal_extractor_adv_build_arm.json',
+        process: function(spec) {
+          spec.construction_demand.metal = 5
+          spec.construction_demand.energy = 100
+          spec.max_range = 100
+          return spec
         }
       }
     }
