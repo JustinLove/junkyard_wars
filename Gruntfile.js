@@ -7,6 +7,35 @@ var stream = 'stable'
 var media = require('./lib/path').media(stream)
 var build = 'ui/main/shared/js/build.js'
 
+var fab_spray = function(socket) {
+  return {
+    "type": "build",
+    "filename": "/pa/effects/specs/fab_combat_spray.pfx",
+    "bone": socket,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "orientation": [
+      0,
+      0,
+      0
+    ]
+  }
+}
+
+var fab_audio = function() {
+  return {
+    "build": {
+      "cue": "/SE/Construction/Fab_contruction_beam_loop",
+      "flag": "build_target_changed",
+      "should_start_func": "has_build_target",
+      "should_stop_func": "no_build_target"
+    }
+  }
+}
+
 module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
@@ -170,17 +199,18 @@ module.exports = function(grunt) {
       },
     },
     mashup: {
-      mex: {
+      adv_mex: {
         src: [
-          'pa/units/land/metal_extractor/metal_extractor.json',
-          'pa/units/land/laser_defense_single/laser_defense_single.json',
-          'pa/units/land/fabrication_bot_combat/fabrication_bot_combat.json'
+          'pa/units/land/metal_extractor_adv/metal_extractor_adv.json',
+          'pa/units/land/air_defense_adv/air_defense_adv.json'
         ],
         cwd: media,
-        dest: 'pa/units/land/metal_extractor/metal_extractor.json',
-        process: function(mex, ld, cf) {
+        dest: 'pa/units/land/metal_extractor_adv/metal_extractor_adv.json',
+        process: function(mex, ld) {
           delete mex.atrophy_rate
           delete mex.atrophy_cool_down
+          mex.build_metal_cost = 100
+          mex.max_health = 100
           mex.area_build_separation = 20
           mex.description = "Can be ordered to reclaim (or repair) with a high-power, short-range lathe"
           delete mex.feature_requirements
@@ -189,7 +219,9 @@ module.exports = function(grunt) {
           delete mex.production
           delete mex.replaceable_units
           mex.tools = ld.tools
-          mex.tools[0].spec_id = '/pa/units/land/metal_extractor/metal_extractor_build_arm.json'
+          mex.tools[0].spec_id = '/pa/units/land/metal_extractor_adv/metal_extractor_adv_build_arm.json'
+          mex.audio.loops = fab_audio()
+          mex.fx_offsets = mex.tools[0].muzzle_bone.map(fab_spray)
           mex.buildable_types = "MetalProduction"
           mex.can_only_assist_with_buildable_items = true
           mex.recon.observer.items.push({
@@ -200,6 +232,7 @@ module.exports = function(grunt) {
             "uses_energy": false
           })
           mex.unit_types[0] = 'UNITTYPE_Mobile' // replacing structure
+          mex.unit_types.push('UNITTYPE_Construction')
           mex.navigation = {
             "acceleration": 0,
             "brake": 0,
@@ -214,37 +247,34 @@ module.exports = function(grunt) {
             "ORDER_Repair",
             "ORDER_Assist"
           ]
-          mex.audio.loops = {build: cf.audio.loops.build}
-          mex.fx_offsets = cf.fx_offsets
           return mex
         }
       },
-      mex_tool: {
+      adv_mex_tool: {
         src: [
           'pa/units/land/fabrication_bot_combat/fabrication_bot_combat_build_arm.json'
         ],
         cwd: media,
-        dest: 'pa/units/land/metal_extractor/metal_extractor_build_arm.json',
+        dest: 'pa/units/land/metal_extractor_adv/metal_extractor_adv_build_arm.json',
         process: function(spec) {
           spec.construction_demand.metal = 50
           spec.construction_demand.energy = 1000
           spec.max_range = 20
+          delete spec.auto_repair
           return spec
         }
       },
-      adv_mex: {
+      mex: {
         src: [
-          'pa/units/land/metal_extractor_adv/metal_extractor_adv.json',
-          'pa/units/land/laser_defense/laser_defense.json',
-          'pa/units/land/fabrication_bot_adv/fabrication_bot_adv.json',
-          'pa/units/land/fabrication_bot_combat/fabrication_bot_combat.json'
+          'pa/units/land/metal_extractor/metal_extractor.json',
+          'pa/units/land/laser_defense_single/laser_defense_single.json'
         ],
         cwd: media,
-        dest: 'pa/units/land/metal_extractor_adv/metal_extractor_adv.json',
-        process: function(mex, ld, fba, cf) {
+        dest: 'pa/units/land/metal_extractor/metal_extractor.json',
+        process: function(mex, ld) {
           delete mex.atrophy_rate
           delete mex.atrophy_cool_down
-          mex.build_metal_cost = 300
+          mex.build_metal_cost = 150
           mex.max_health = 1000
           mex.area_build_separation = 200
           mex.display_name = "Reclaim Tower"
@@ -255,7 +285,9 @@ module.exports = function(grunt) {
           delete mex.production
           delete mex.replaceable_units
           mex.tools = ld.tools
-          mex.tools[0].spec_id = '/pa/units/land/metal_extractor_adv/metal_extractor_adv_build_arm.json'
+          mex.tools[0].spec_id = '/pa/units/land/metal_extractor/metal_extractor_build_arm.json'
+          mex.audio.loops = fab_audio()
+          mex.fx_offsets = mex.tools[0].muzzle_bone.map(fab_spray)
           mex.buildable_types = "MetalProduction"
           mex.can_only_assist_with_buildable_items = true
           mex.recon.observer.items.push({
@@ -266,6 +298,7 @@ module.exports = function(grunt) {
             "uses_energy": false
           })
           mex.unit_types[0] = 'UNITTYPE_Mobile' // replacing structure
+          mex.unit_types.push('UNITTYPE_Construction')
           mex.navigation = {
             "acceleration": 0,
             "brake": 0,
@@ -280,8 +313,6 @@ module.exports = function(grunt) {
             "ORDER_Repair",
             "ORDER_Assist"
           ]
-          mex.audio.loops = {build: cf.audio.loops.build}
-          mex.fx_offsets = fba.fx_offsets
           return mex
         }
       },
@@ -290,11 +321,12 @@ module.exports = function(grunt) {
           'pa/units/land/fabrication_bot_combat/fabrication_bot_combat_build_arm.json'
         ],
         cwd: media,
-        dest: 'pa/units/land/metal_extractor_adv/metal_extractor_adv_build_arm.json',
+        dest: 'pa/units/land/metal_extractor/metal_extractor_build_arm.json',
         process: function(spec) {
           spec.construction_demand.metal = 5
           spec.construction_demand.energy = 100
           spec.max_range = 100
+          delete spec.auto_repair
           return spec
         }
       }

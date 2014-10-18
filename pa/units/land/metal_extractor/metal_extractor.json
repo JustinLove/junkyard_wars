@@ -1,7 +1,7 @@
 {
   "base_spec": "/pa/units/land/base_structure/base_structure.json",
-  "display_name": "!LOC(units:metal_extractor.message):Metal Extractor",
-  "description": "Can be ordered to reclaim (or repair) with a high-power, short-range lathe",
+  "display_name": "Reclaim Tower",
+  "description": "Can be ordered to reclaim (or repair) with a low-power, long-range lathe",
   "max_health": 1000,
   "build_metal_cost": 150,
   "spawn_layers": "WL_AnyHorizontalGroundOrWaterSurface",
@@ -15,7 +15,8 @@
     "UNITTYPE_MetalProduction",
     "UNITTYPE_CmdBuild",
     "UNITTYPE_FabBuild",
-    "UNITTYPE_Economy"
+    "UNITTYPE_Economy",
+    "UNITTYPE_Construction"
   ],
   "recon": {
     "observer": {
@@ -29,7 +30,7 @@
         {
           "channel": "radar",
           "layer": "surface",
-          "radius": 20,
+          "radius": 100,
           "shape": "capsule",
           "uses_energy": false
         }
@@ -97,13 +98,30 @@
     16
   ],
   "TEMP_texelinfo": 15.0973,
-  "area_build_separation": 20,
+  "area_build_separation": 200,
   "tools": [
     {
       "spec_id": "/pa/units/land/metal_extractor/metal_extractor_build_arm.json",
       "aim_bone": "bone_pitch",
       "muzzle_bone": [
         "socket_muzzle"
+      ]
+    }
+  ],
+  "fx_offsets": [
+    {
+      "type": "build",
+      "filename": "/pa/effects/specs/fab_combat_spray.pfx",
+      "bone": "socket_muzzle",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        0,
+        0
       ]
     }
   ],
@@ -122,22 +140,5 @@
     "ORDER_Reclaim",
     "ORDER_Repair",
     "ORDER_Assist"
-  ],
-  "fx_offsets": [
-    {
-      "type": "build",
-      "filename": "/pa/effects/specs/fab_combat_spray.pfx",
-      "bone": "socket_muzzle",
-      "offset": [
-        0,
-        0,
-        0
-      ],
-      "orientation": [
-        0,
-        0,
-        0
-      ]
-    }
   ]
 }

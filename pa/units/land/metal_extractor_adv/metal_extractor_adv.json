@@ -1,10 +1,10 @@
 {
   "base_spec": "/pa/units/land/base_structure/base_structure.json",
-  "display_name": "Reclaim Tower",
-  "description": "Can be ordered to reclaim (or repair) with a low-power, long-range lathe",
+  "display_name": "!LOC(units:advanced_metal_extractor.message):Advanced Metal Extractor",
+  "description": "Can be ordered to reclaim (or repair) with a high-power, short-range lathe",
   "strategic_icon_priority": 5,
-  "max_health": 1000,
-  "build_metal_cost": 300,
+  "max_health": 100,
+  "build_metal_cost": 100,
   "spawn_layers": "WL_AnyHorizontalGroundOrWaterSurface",
   "area_build_type": "Sphere",
   "consumption": {
@@ -15,7 +15,8 @@
     "UNITTYPE_Advanced",
     "UNITTYPE_MetalProduction",
     "UNITTYPE_FabAdvBuild",
-    "UNITTYPE_Economy"
+    "UNITTYPE_Economy",
+    "UNITTYPE_Construction"
   ],
   "recon": {
     "observer": {
@@ -29,7 +30,7 @@
         {
           "channel": "radar",
           "layer": "surface",
-          "radius": 100,
+          "radius": 20,
           "shape": "capsule",
           "uses_energy": false
         }
@@ -39,14 +40,14 @@
   "model": [
     {
       "layer": "WL_LandHorizontal",
-      "filename": "/pa/units/land/laser_defense/laser_defense.papa",
-      "animtree": "/pa/anim/anim_trees/defense_turret_anim_tree.json",
-      "skirt_decal": "/pa/effects/specs/skirt_defense.json"
+      "filename": "/pa/units/land/air_defense_adv/air_defense_adv.papa",
+      "animtree": "/pa/anim/anim_trees/air_defense_adv_anim_tree.json",
+      "skirt_decal": "/pa/effects/specs/skirt_air_defense_adv.json"
     },
     {
       "layer": "WL_WaterSurface",
-      "filename": "/pa/units/sea/floating_laser/floating_laser.papa",
-      "animtree": "/pa/anim/anim_trees/defense_turret_anim_tree.json"
+      "filename": "/pa/units/sea/air_defense_adv/air_defense_adv.papa",
+      "animtree": "/pa/anim/anim_trees/fabrication_turret_anim_tree.json"
     }
   ],
   "events": {
@@ -88,23 +89,87 @@
     }
   ],
   "mesh_bounds": [
-    6,
-    6,
-    17.2
+    7,
+    7,
+    9.4
   ],
   "placement_size": [
     20,
     16
   ],
   "TEMP_texelinfo": 24.4307,
-  "area_build_separation": 200,
+  "area_build_separation": 20,
   "tools": [
     {
       "spec_id": "/pa/units/land/metal_extractor_adv/metal_extractor_adv_build_arm.json",
       "aim_bone": "bone_pitch",
       "muzzle_bone": [
-        "socket_rightMuzzle",
-        "socket_leftMuzzle"
+        "socket_rightMuzzle01",
+        "socket_leftMuzzle01",
+        "socket_rightMuzzle02",
+        "socket_leftMuzzle02"
+      ]
+    }
+  ],
+  "fx_offsets": [
+    {
+      "type": "build",
+      "filename": "/pa/effects/specs/fab_combat_spray.pfx",
+      "bone": "socket_rightMuzzle01",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "build",
+      "filename": "/pa/effects/specs/fab_combat_spray.pfx",
+      "bone": "socket_leftMuzzle01",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "build",
+      "filename": "/pa/effects/specs/fab_combat_spray.pfx",
+      "bone": "socket_rightMuzzle02",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "build",
+      "filename": "/pa/effects/specs/fab_combat_spray.pfx",
+      "bone": "socket_leftMuzzle02",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        0,
+        0
       ]
     }
   ],
@@ -123,37 +188,5 @@
     "ORDER_Reclaim",
     "ORDER_Repair",
     "ORDER_Assist"
-  ],
-  "fx_offsets": [
-    {
-      "type": "build",
-      "filename": "/pa/effects/specs/fab_spray.pfx",
-      "bone": "socket_rightMuzzle",
-      "offset": [
-        0,
-        0,
-        0
-      ],
-      "orientation": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "type": "build",
-      "filename": "/pa/effects/specs/fab_spray.pfx",
-      "bone": "socket_leftMuzzle",
-      "offset": [
-        0,
-        0,
-        0
-      ],
-      "orientation": [
-        0,
-        0,
-        0
-      ]
-    }
   ]
 }
