@@ -190,7 +190,8 @@ module.exports = function(grunt) {
       },
       metal_spots: {
         targets: [
-          'pa/terrain/generic/base_metal.json'
+          'pa/terrain/generic/base_metal.json',
+          'pa/effects/features/metal_splat_02.json'
         ],
         process: function(spec) {
           spec.max_health = 1000
