@@ -34,6 +34,7 @@ module.exports = function(grunt) {
         ],
       },
     },
+    clean: [modPath],
     jsonlint: {
       all: {
         src: [
@@ -172,6 +173,7 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-jsonlint');
   grunt.loadNpmTasks('grunt-json-schema');
 
