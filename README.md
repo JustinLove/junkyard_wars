@@ -8,6 +8,7 @@ Most metal comes via reclaim.
 - Basic metal extractors are Reclaim Towers; they can be ordered reclaim the nearby area, as well as build more towers and mex.
 - Advanced mex are high-power, short-range mining turrets for quickly sucking up metal points.
 - Basic Combat Fab is the Junkyard Dog - a cheap scavenger that can also build mex.
+- Advanced Combat Fab is a basic builder designed for heavy fire situations - a commander in all but uber cannon and death weapon.
 
 ## Planned Features
 

@@ -36,6 +36,10 @@ var fab_audio = function() {
   }
 }
 
+var dup = function(obj) {
+  return JSON.parse(JSON.stringify(obj))
+}
+
 module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
@@ -67,6 +71,7 @@ module.exports = function(grunt) {
     jsonlint: {
       all: {
         src: [
+          'pa/anim/**/*.json',
           'pa/effects/**/*.json',
           'pa/terrain/**/*.json',
           'pa/ammo/**/*.json',
@@ -79,6 +84,7 @@ module.exports = function(grunt) {
       all: {
         files: {
           'lib/schema.json': [
+            'pa/anim/**/*.json',
             'pa/effects/**/*.json',
             'pa/terrain/**/*.json',
             'pa/ammo/**/*.json',
@@ -135,6 +141,22 @@ module.exports = function(grunt) {
             energy: 200,
             metal: 10
           }
+        }
+      },
+      adv_comfab_anim: {
+        targets: [
+          'pa/anim/anim_trees/fabrication_bot_combat_adv_anim_tree.json'
+        ],
+        process: function(spec) {
+          var bt = spec.skeleton_controls[0]
+          var ft = dup(bt)
+          ft.child.rotation_bone = 'bone_turretFront'
+          spec.skeleton_controls.push(ft)
+
+          var bp = spec.skeleton_controls[1]
+          var fr = dup(bp)
+          fr.child.rotation_bone = 'bone_recoil'
+          spec.skeleton_controls.push(ft)
         }
       },
       mex: {
@@ -329,6 +351,36 @@ module.exports = function(grunt) {
           spec.max_range = 100
           delete spec.auto_repair
           return spec
+        }
+      },
+      adv_comfab: {
+        src: [
+          'pa/units/land/fabrication_bot_combat_adv/fabrication_bot_combat_adv.json',
+          'pa/units/commanders/base_commander/base_commander.json'
+        ],
+        cwd: media,
+        dest: 'pa/units/land/fabrication_bot_combat_adv/fabrication_bot_combat_adv.json',
+        process: function(acf, com) {
+          delete acf.atrophy_rate
+          delete acf.atrophy_cool_down
+          delete acf.guard_layer
+          acf.buildable_types = com.buildable_types + " | Defense & FabBuild | Recon & FabBuild"
+          acf.command_caps.push('ORDER_Attack')
+          acf.description = "The combat fabricator is fully armored and armed to provide build support in heavy fire situations."
+          acf.max_health = com.max_health
+          acf.navigation = com.navigation
+          acf.tools = com.tools.filter(function(tool) {
+            if (tool.spec_id == "/pa/tools/commander_build_arm/commander_build_arm.json") {
+              tool.aim_bone = 'bone_turretBack'
+              tool.muzzle_bone = 'socket_muzzleBack'
+            } else {
+              tool.aim_bone = 'bone_turretFront'
+              tool.muzzle_bone = 'socket_muzzleFront'
+            }
+
+            return tool.spec_id != '/pa/tools/uber_cannon/uber_cannon.json'
+          })
+          return acf
         }
       }
     }
