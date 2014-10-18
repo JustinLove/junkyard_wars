@@ -5,14 +5,13 @@ Most metal comes via reclaim.
 - All units leave wrecks.
 - All features are reclaimable (trees < rocks < random metal bits on metal planets)
 - Metal spots are reclaimable for signifcant but finite metal
-- Basic metal extractors are Reclaim Towers; they can be ordered reclaim the nearby area, as well as build more towers and mex.
-- Advanced mex are high-power, short-range mining turrets for quickly sucking up metal points.
+- Metal extractors have been removed.
 - Basic Combat Fab is the Junkyard Dog - a cheap scavenger that can also build mex.
 - Advanced Combat Fab is a basic builder designed for heavy fire situations - a commander in all but uber cannon and death weapon.
 
 ## Planned Features
 
-Currently in the exporatory phase; lots of tweaking and probably adding reclaim untis for all factories.
+Currently in the exporatory phase; lots of tweaking and probably adding reclaim untis for all factories.  Might look for unit to replace metal extractors; tried reclaim towers but found them fiddly.
 
 ## Trivia
 
