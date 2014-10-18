@@ -110,7 +110,6 @@ module.exports = function(grunt) {
       },
       mex: {
         targets: [
-          'pa/units/land/metal_extractor/metal_extractor.json',
           'pa/units/land/metal_extractor_adv/metal_extractor_adv.json'
         ],
         process: function(spec) {
@@ -169,6 +168,51 @@ module.exports = function(grunt) {
           spec.metal_value = 2000 * spec.max_health * 10
         }
       },
+    },
+    mashup: {
+      mex: {
+        src: [
+          'pa/units/land/metal_extractor/metal_extractor.json',
+          'pa/units/land/laser_defense_single/laser_defense_single.json',
+          'pa/units/land/fabrication_bot_combat/fabrication_bot_combat.json'
+        ],
+        cwd: media,
+        dest: 'pa/units/land/metal_extractor/metal_extractor.json',
+        process: function(mex, ld, cf) {
+          delete mex.atrophy_rate
+          delete mex.atrophy_cool_down
+          mex.area_build_separation = 20
+          mex.display_name = "Reclaim Tower"
+          mex.description = "Can be ordered to reclaim (or repair) nearby, and build more towers"
+          delete mex.feature_requirements
+          mex.mesh_bounds = ld.mesh_bounds
+          mex.model = ld.model
+          delete mex.production
+          delete mex.replaceable_units
+          mex.tools = ld.tools
+          mex.tools[0].spec_id = cf.tools[0].spec_id
+          mex.buildable_types = "MetalProduction & Basic"
+          mex.can_only_assist_with_buildable_items = true
+          mex.unit_types[0] = 'UNITTYPE_Mobile' // replacing structure
+          mex.navigation = {
+            "acceleration": 0,
+            "brake": 0,
+            "move_speed": 0,
+            "turn_in_place": false,
+            "turn_speed": 0,
+            "type": "amphibious"
+          }
+          mex.command_caps = [
+            "ORDER_Build",
+            "ORDER_Reclaim",
+            "ORDER_Repair",
+            "ORDER_Assist"
+          ]
+          mex.audio.loops = {build: cf.audio.loops.build}
+          mex.fx_offsets = cf.fx_offsets
+          return mex
+        }
+      }
     }
   });
 
@@ -182,8 +226,14 @@ module.exports = function(grunt) {
     spec.copyUnitFiles(grunt, specs, this.data.process)
   })
 
+  grunt.registerMultiTask('mashup', 'Process unit files', function() {
+    var specs = this.filesSrc.map(function(s) {return grunt.file.readJSON(media + s)})
+    var out = this.data.process.apply(this, specs)
+    grunt.file.write(this.data.dest, JSON.stringify(out, null, 2))
+  })
+
   // Default task(s).
-  grunt.registerTask('default', ['proc', 'json_schema', 'jsonlint', 'copy:mod']);
+  grunt.registerTask('default', ['proc', 'mashup', 'json_schema', 'jsonlint', 'copy:mod']);
 
 };
 
