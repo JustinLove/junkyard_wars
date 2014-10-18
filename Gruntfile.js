@@ -149,13 +149,19 @@ module.exports = function(grunt) {
         ],
         process: function(spec) {
           var bt = spec.skeleton_controls[0]
+          bt.child.weapon_index = 0
+
           var ft = dup(bt)
           ft.child.rotation_bone = 'bone_turretFront'
+          ft.child.weapon_index = 1
           spec.skeleton_controls.push(ft)
 
           var bp = spec.skeleton_controls[1]
+          bp.child.weapon_index = 0
+
           var fr = dup(bp)
           fr.child.rotation_bone = 'bone_recoil'
+          fr.child.weapon_index = 1
           spec.skeleton_controls.push(ft)
         }
       },
@@ -243,9 +249,11 @@ module.exports = function(grunt) {
             if (tool.spec_id == "/pa/tools/commander_build_arm/commander_build_arm.json") {
               tool.aim_bone = 'bone_turretBack'
               tool.muzzle_bone = 'socket_muzzleBack'
+              tool.record_index = 0
             } else {
               tool.aim_bone = 'bone_turretFront'
               tool.muzzle_bone = 'socket_muzzleFront'
+              tool.record_index = 1
             }
 
             return tool.spec_id != '/pa/tools/uber_cannon/uber_cannon.json'

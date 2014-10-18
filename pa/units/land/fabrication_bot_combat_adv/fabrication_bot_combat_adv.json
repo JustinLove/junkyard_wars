@@ -82,27 +82,31 @@
     {
       "spec_id": "/pa/tools/commander_build_arm/commander_build_arm.json",
       "aim_bone": "bone_turretBack",
-      "muzzle_bone": "socket_muzzleBack"
+      "muzzle_bone": "socket_muzzleBack",
+      "record_index": 0
     },
     {
       "spec_id": "/pa/units/commanders/base_commander/base_commander_tool_bullet_weapon.json",
       "aim_bone": "bone_turretFront",
       "muzzle_bone": "socket_muzzleFront",
-      "primary_weapon": true
+      "primary_weapon": true,
+      "record_index": 1
     },
     {
       "spec_id": "/pa/units/commanders/base_commander/base_commander_tool_aa_weapon.json",
       "aim_bone": "bone_turretFront",
       "muzzle_bone": "socket_muzzleFront",
       "primary_weapon": false,
-      "show_range": false
+      "show_range": false,
+      "record_index": 1
     },
     {
       "spec_id": "/pa/units/commanders/base_commander/base_commander_tool_torpedo_weapon.json",
       "aim_bone": "bone_turretFront",
       "muzzle_bone": "socket_muzzleFront",
       "primary_weapon": false,
-      "show_range": false
+      "show_range": false,
+      "record_index": 1
     }
   ],
   "events": {
