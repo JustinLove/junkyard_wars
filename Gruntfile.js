@@ -112,6 +112,7 @@ module.exports = function(grunt) {
   merge(config.proc, require('./proc/inferno')(media))
   merge(config.proc, require('./proc/gunship')(media))
   merge(config.proc, require('./proc/firefly')(media))
+  merge(config.proc, require('./proc/sunfish')(media))
 
   grunt.initConfig(config)
 

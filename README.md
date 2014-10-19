@@ -14,6 +14,7 @@ Most metal comes via reclaim.
 - Inferno has a powerful short-range lathe for mopping up an enemy base and quickly mining metal spots  You may need to use hold-fire if you want to use it on live targets.
 - Firefly has a very weak lathe for picking up small rocks and trees
 - Gunship has a moderate lathe for reclaim raiding; it still has a weapon for dealing with large groups, so you may need to hold fire if you want all the metal.
+- Sunfish has a basic relaim tool; the effect direction may be off since it doesn't have a turret.
 
 ## Planned Features
 
