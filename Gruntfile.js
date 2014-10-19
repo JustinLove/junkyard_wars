@@ -7,40 +7,25 @@ var stream = 'stable'
 var media = require('./lib/path').media(stream)
 var build = 'ui/main/shared/js/build.js'
 
-var fab_spray = function(socket) {
-  return {
-    "type": "build",
-    "filename": "/pa/effects/specs/fab_combat_spray.pfx",
-    "bone": socket,
-    "offset": [
-      0,
-      0,
-      0
-    ],
-    "orientation": [
-      0,
-      0,
-      0
-    ]
+var extend = function(obj, by) {
+  for (var p in by) {
+    if (by.hasOwnProperty(p)) {
+      obj[p] = by[p]
+    }
   }
 }
 
-var fab_audio = function() {
-  return {
-    "cue": "/SE/Construction/Fab_contruction_beam_loop",
-    "flag": "build_target_changed",
-    "should_start_func": "has_build_target",
-    "should_stop_func": "no_build_target"
+var merge = function(target) {
+  for (var i in arguments) {
+    if (i != 0) {
+      extend(target, arguments[i])
+    }
   }
-}
-
-var dup = function(obj) {
-  return JSON.parse(JSON.stringify(obj))
 }
 
 module.exports = function(grunt) {
   // Project configuration.
-  grunt.initConfig({
+  var config = {
     copy: {
       build: {
         files: [
@@ -117,194 +102,16 @@ module.exports = function(grunt) {
           spec.production.metal = 1
           spec.storage.metal = 5000
         }
-      },
-      mex: {
-        targets: [
-          'pa/units/land/metal_extractor/metal_extractor.json',
-          'pa/units/land/metal_extractor_adv/metal_extractor_adv.json'
-        ],
-        process: function(spec) {
-          delete spec.unit_types
-        }
-      },
-      basic_comfab: {
-        targets: [
-          'pa/units/land/fabrication_bot_combat/fabrication_bot_combat.json'
-        ],
-        process: function(spec) {
-          spec.build_metal_cost = 45
-          spec.max_health = 10
-          spec.buildable_types = 'MetalProduction & Basic'
-          spec.description = 'Scavenger - Able to reclaim, and build metal extractors'
-          spec.display_name = 'Junkyard Dog'
-        }
-      },
-      basic_comfab_tool: {
-        targets: [
-          'pa/units/land/fabrication_bot_combat/fabrication_bot_combat_build_arm.json'
-        ],
-        process: function(spec) {
-          delete spec.auto_repair
-          spec.construction_demand = {
-            energy: 200,
-            metal: 10
-          }
-        }
-      },
-      adv_comfab: {
-        src: [
-          'pa/units/land/fabrication_bot_combat_adv/fabrication_bot_combat_adv.json',
-          'pa/units/commanders/base_commander/base_commander.json'
-        ],
-        cwd: media,
-        dest: 'pa/units/land/fabrication_bot_combat_adv/fabrication_bot_combat_adv.json',
-        process: function(acf, com) {
-          delete acf.atrophy_rate
-          delete acf.atrophy_cool_down
-          delete acf.guard_layer
-          acf.buildable_types = com.buildable_types + " | Defense & FabBuild | Recon & FabBuild"
-          acf.command_caps.push('ORDER_Attack')
-          acf.description = "The combat fabricator is fully armored and armed to provide build support in heavy fire situations."
-          acf.max_health = com.max_health
-          acf.navigation = com.navigation
-          acf.events.fired = {
-            "effect_spec": "/pa/effects/specs/default_muzzle_flash.pfx socket_muzzleFront"
-          }
-          acf.tools = com.tools.filter(function(tool) {
-            if (tool.spec_id == "/pa/tools/commander_build_arm/commander_build_arm.json") {
-              tool.aim_bone = 'bone_turretBack'
-              tool.muzzle_bone = 'socket_muzzleBack'
-              tool.record_index = 0
-            } else {
-              tool.aim_bone = 'bone_turretFront'
-              tool.muzzle_bone = 'socket_muzzleFront'
-              tool.record_index = 1
-            }
-
-            return tool.spec_id != '/pa/tools/uber_cannon/uber_cannon.json'
-          })
-          return acf
-        }
-      },
-      adv_comfab_anim: {
-        targets: [
-          'pa/anim/anim_trees/fabrication_bot_combat_adv_anim_tree.json'
-        ],
-        process: function(spec) {
-          var bt = spec.skeleton_controls[0]
-          bt.child.weapon_index = 0
-
-          var ft = dup(bt)
-          ft.child.rotation_bone = 'bone_turretFront'
-          ft.child.weapon_index = 1
-          spec.skeleton_controls.push(ft)
-
-          var bp = spec.skeleton_controls[1]
-          bp.child.weapon_index = 0
-
-          var fr = dup(bp)
-          fr.child.rotation_bone = 'bone_recoil'
-          fr.child.weapon_index = 1
-          spec.skeleton_controls.push(ft)
-        }
-      },
-      inferno: {
-        targets: [
-          'pa/units/land/tank_armor/tank_armor.json'
-        ],
-        process: function(spec) {
-          var rec = dup(spec.tools[0])
-          rec.spec_id = '/pa/units/land/tank_armor/tank_armor_build_arm.json'
-          spec.tools.push(rec)
-          spec.audio.loops.build = fab_audio()
-          spec.fx_offsets = [fab_spray(rec.muzzle_bone)]
-          spec.can_only_assist_with_buildable_items = true
-          spec.command_caps = [
-            "ORDER_Move",
-            "ORDER_Patrol",
-            "ORDER_Attack",
-            "ORDER_Assist",
-            "ORDER_Reclaim",
-            "ORDER_Use"
-          ]
-        }
-      },
-      inferno_buildarm: {
-        src: [
-          'pa/units/land/fabrication_bot_combat/fabrication_bot_combat_build_arm.json',
-          'pa/units/land/tank_armor/tank_armor_tool_weapon.json'
-        ],
-        cwd: media,
-        dest: 'pa/units/land/tank_armor/tank_armor_build_arm.json',
-        process: function(ba, wep) {
-          delete ba.auto_repair
-          ba.max_range = wep.max_range
-          ba.pitch_range = wep.pitch_range
-          ba.pitch_rate = wep.pitch_rate
-          ba.yaw_range = wep.yaw_range
-          ba.yaw_rate = wep.yaw_rate
-          ba.construction_demand = {
-            metal: 50,
-            energy: 3000
-          }
-          return ba
-        }
-      },
-      base_feature: {
-        targets: [
-          'pa/terrain/generic/base_feature.json'
-        ],
-        process: function(spec) {
-          spec.max_health = 10 // changing this is easier than all the trees
-          spec.metal_value = 5 * spec.max_health * 10
-          spec.reclaimable = true
-          spec.damageable = true // required for reclaim
-        }
-      },
-      features: { // these just have to exist in the mod to pick up the base changes
-        targets: [
-          'pa/terrain/*/features/*.json'
-        ]
-      },
-      rocks: {
-        targets: [
-          'pa/terrain/*/features/base*rock*.json'
-        ],
-        process: function(spec) {
-          spec.max_health = 25
-          spec.metal_value = 10 * spec.max_health * 10
-        }
-      },
-      metal: {
-        targets: [
-          'pa/terrain/metal/features/base_metal_feature.json'
-        ],
-        process: function(spec) {
-          spec.max_health = 100
-          spec.metal_value = 50 * spec.max_health * 10
-        }
-      },
-      special_points: { // oh dear, that would have been amusing...
-        targets: [
-          'pa/effects/features/control_point_01.json',
-        ],
-        process: function(spec) {
-          spec.reclaimable = false
-          spec.damageable = false
-        }
-      },
-      metal_spots: {
-        targets: [
-          'pa/terrain/generic/base_metal.json',
-          'pa/effects/features/metal_splat_02.json'
-        ],
-        process: function(spec) {
-          spec.max_health = 1000
-          spec.metal_value = 2000 * spec.max_health * 10
-        }
       }
     }
-  });
+  };
+
+  merge(config.proc, require('./proc/features')(media))
+  merge(config.proc, require('./proc/basic_comfab')(media))
+  merge(config.proc, require('./proc/adv_comfab')(media))
+  merge(config.proc, require('./proc/inferno')(media))
+
+  grunt.initConfig(config)
 
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
