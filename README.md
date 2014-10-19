@@ -6,8 +6,12 @@ Most metal comes via reclaim.
 - All features are reclaimable (trees < rocks < random metal bits on metal planets)
 - Metal spots are reclaimable for signifcant but finite metal
 - Metal extractors have been removed.
-- Basic Combat Fab is the Junkyard Dog - a cheap scavenger that can also build mex.
+
+### Units
+
+- Basic Combat Fab is the Junkyard Dog - a cheap scavenger
 - Advanced Combat Fab is a basic builder designed for heavy fire situations - a commander in all but uber cannon and death weapon.
+- Inferno has a powerful short-range lathe for mopping up an enemy base and quickly mining metal spots  You may need to use hold-fire if you want to use it on live targets.
 
 ## Planned Features
 
