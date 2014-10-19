@@ -118,6 +118,15 @@ module.exports = function(grunt) {
           spec.storage.metal = 5000
         }
       },
+      mex: {
+        targets: [
+          'pa/units/land/metal_extractor/metal_extractor.json',
+          'pa/units/land/metal_extractor_adv/metal_extractor_adv.json'
+        ],
+        process: function(spec) {
+          delete spec.unit_types
+        }
+      },
       basic_comfab: {
         targets: [
           'pa/units/land/fabrication_bot_combat/fabrication_bot_combat.json'
@@ -142,6 +151,41 @@ module.exports = function(grunt) {
           }
         }
       },
+      adv_comfab: {
+        src: [
+          'pa/units/land/fabrication_bot_combat_adv/fabrication_bot_combat_adv.json',
+          'pa/units/commanders/base_commander/base_commander.json'
+        ],
+        cwd: media,
+        dest: 'pa/units/land/fabrication_bot_combat_adv/fabrication_bot_combat_adv.json',
+        process: function(acf, com) {
+          delete acf.atrophy_rate
+          delete acf.atrophy_cool_down
+          delete acf.guard_layer
+          acf.buildable_types = com.buildable_types + " | Defense & FabBuild | Recon & FabBuild"
+          acf.command_caps.push('ORDER_Attack')
+          acf.description = "The combat fabricator is fully armored and armed to provide build support in heavy fire situations."
+          acf.max_health = com.max_health
+          acf.navigation = com.navigation
+          acf.events.fired = {
+            "effect_spec": "/pa/effects/specs/default_muzzle_flash.pfx socket_muzzleFront"
+          }
+          acf.tools = com.tools.filter(function(tool) {
+            if (tool.spec_id == "/pa/tools/commander_build_arm/commander_build_arm.json") {
+              tool.aim_bone = 'bone_turretBack'
+              tool.muzzle_bone = 'socket_muzzleBack'
+              tool.record_index = 0
+            } else {
+              tool.aim_bone = 'bone_turretFront'
+              tool.muzzle_bone = 'socket_muzzleFront'
+              tool.record_index = 1
+            }
+
+            return tool.spec_id != '/pa/tools/uber_cannon/uber_cannon.json'
+          })
+          return acf
+        }
+      },
       adv_comfab_anim: {
         targets: [
           'pa/anim/anim_trees/fabrication_bot_combat_adv_anim_tree.json'
@@ -164,13 +208,46 @@ module.exports = function(grunt) {
           spec.skeleton_controls.push(ft)
         }
       },
-      mex: {
+      inferno: {
         targets: [
-          'pa/units/land/metal_extractor/metal_extractor.json',
-          'pa/units/land/metal_extractor_adv/metal_extractor_adv.json'
+          'pa/units/land/tank_armor/tank_armor.json'
         ],
         process: function(spec) {
-          delete spec.unit_types
+          var rec = dup(spec.tools[0])
+          rec.spec_id = '/pa/units/land/tank_armor/tank_armor_build_arm.json'
+          spec.tools.push(rec)
+          spec.audio.loops.build = fab_audio()
+          spec.fx_offsets = [fab_spray(rec.muzzle_bone)]
+          spec.can_only_assist_with_buildable_items = true
+          spec.command_caps = [
+            "ORDER_Move",
+            "ORDER_Patrol",
+            "ORDER_Attack",
+            "ORDER_Assist",
+            "ORDER_Reclaim",
+            "ORDER_Use"
+          ]
+        }
+      },
+      inferno_buildarm: {
+        src: [
+          'pa/units/land/fabrication_bot_combat/fabrication_bot_combat_build_arm.json',
+          'pa/units/land/tank_armor/tank_armor_tool_weapon.json'
+        ],
+        cwd: media,
+        dest: 'pa/units/land/tank_armor/tank_armor_build_arm.json',
+        process: function(ba, wep) {
+          delete ba.auto_repair
+          ba.max_range = wep.max_range
+          ba.pitch_range = wep.pitch_range
+          ba.pitch_rate = wep.pitch_rate
+          ba.yaw_range = wep.yaw_range
+          ba.yaw_rate = wep.yaw_rate
+          ba.construction_demand = {
+            metal: 50,
+            energy: 3000
+          }
+          return ba
         }
       },
       base_feature: {
@@ -225,85 +302,6 @@ module.exports = function(grunt) {
           spec.max_health = 1000
           spec.metal_value = 2000 * spec.max_health * 10
         }
-      },
-      inferno: {
-        targets: [
-          'pa/units/land/tank_armor/tank_armor.json'
-        ],
-        process: function(spec) {
-          var rec = dup(spec.tools[0])
-          rec.spec_id = '/pa/units/land/tank_armor/tank_armor_build_arm.json'
-          spec.tools.push(rec)
-          spec.audio.loops.build = fab_audio()
-          spec.fx_offsets = [fab_spray(rec.muzzle_bone)]
-          spec.can_only_assist_with_buildable_items = true
-          spec.command_caps = [
-            "ORDER_Move",
-            "ORDER_Patrol",
-            "ORDER_Attack",
-            "ORDER_Assist",
-            "ORDER_Reclaim",
-            "ORDER_Use"
-          ]
-        }
-      },
-    },
-    mashup: {
-      adv_comfab: {
-        src: [
-          'pa/units/land/fabrication_bot_combat_adv/fabrication_bot_combat_adv.json',
-          'pa/units/commanders/base_commander/base_commander.json'
-        ],
-        cwd: media,
-        dest: 'pa/units/land/fabrication_bot_combat_adv/fabrication_bot_combat_adv.json',
-        process: function(acf, com) {
-          delete acf.atrophy_rate
-          delete acf.atrophy_cool_down
-          delete acf.guard_layer
-          acf.buildable_types = com.buildable_types + " | Defense & FabBuild | Recon & FabBuild"
-          acf.command_caps.push('ORDER_Attack')
-          acf.description = "The combat fabricator is fully armored and armed to provide build support in heavy fire situations."
-          acf.max_health = com.max_health
-          acf.navigation = com.navigation
-          acf.events.fired = {
-            "effect_spec": "/pa/effects/specs/default_muzzle_flash.pfx socket_muzzleFront"
-          }
-          acf.tools = com.tools.filter(function(tool) {
-            if (tool.spec_id == "/pa/tools/commander_build_arm/commander_build_arm.json") {
-              tool.aim_bone = 'bone_turretBack'
-              tool.muzzle_bone = 'socket_muzzleBack'
-              tool.record_index = 0
-            } else {
-              tool.aim_bone = 'bone_turretFront'
-              tool.muzzle_bone = 'socket_muzzleFront'
-              tool.record_index = 1
-            }
-
-            return tool.spec_id != '/pa/tools/uber_cannon/uber_cannon.json'
-          })
-          return acf
-        }
-      },
-      inferno_buildarm: {
-        src: [
-          'pa/units/land/fabrication_bot_combat/fabrication_bot_combat_build_arm.json',
-          'pa/units/land/tank_armor/tank_armor_tool_weapon.json'
-        ],
-        cwd: media,
-        dest: 'pa/units/land/tank_armor/tank_armor_build_arm.json',
-        process: function(ba, wep) {
-          delete ba.auto_repair
-          ba.max_range = wep.max_range
-          ba.pitch_range = wep.pitch_range
-          ba.pitch_rate = wep.pitch_rate
-          ba.yaw_range = wep.yaw_range
-          ba.yaw_rate = wep.yaw_rate
-          ba.construction_demand = {
-            metal: 50,
-            energy: 3000
-          }
-          return ba
-        }
       }
     }
   });
@@ -314,18 +312,18 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-json-schema');
 
   grunt.registerMultiTask('proc', 'Process unit files', function() {
-    var specs = spec.copyPairs(grunt, this.data.targets, media)
-    spec.copyUnitFiles(grunt, specs, this.data.process)
-  })
-
-  grunt.registerMultiTask('mashup', 'Process unit files', function() {
-    var specs = this.filesSrc.map(function(s) {return grunt.file.readJSON(media + s)})
-    var out = this.data.process.apply(this, specs)
-    grunt.file.write(this.data.dest, JSON.stringify(out, null, 2))
+    if (this.data.targets) {
+      var specs = spec.copyPairs(grunt, this.data.targets, media)
+      spec.copyUnitFiles(grunt, specs, this.data.process)
+    } else {
+      var specs = this.filesSrc.map(function(s) {return grunt.file.readJSON(media + s)})
+      var out = this.data.process.apply(this, specs)
+      grunt.file.write(this.data.dest, JSON.stringify(out, null, 2))
+    }
   })
 
   // Default task(s).
-  grunt.registerTask('default', ['proc', 'mashup', 'json_schema', 'jsonlint', 'copy:mod']);
+  grunt.registerTask('default', ['proc', 'json_schema', 'jsonlint', 'copy:mod']);
 
 };
 
