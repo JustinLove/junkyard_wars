@@ -8,7 +8,7 @@
   "atrophy_cool_down": 15,
   "spawn_layers": "WL_Orbital",
   "gravwell_velocity_multiplier": 6,
-  "wreckage_health_frac": 1,
+  "wreckage_health_frac": 5,
   "area_build_type": "Sphere",
   "area_build_separation": 75,
   "attachable": {

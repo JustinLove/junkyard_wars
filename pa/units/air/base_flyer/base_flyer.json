@@ -3,7 +3,7 @@
   "description": "Base Flyer Description - If you're seeing this, something is wrong in your flyer.",
   "strategic_icon_priority": 3,
   "max_health": 1,
-  "wreckage_health_frac": 1,
+  "wreckage_health_frac": 5,
   "build_metal_cost": 1,
   "spawn_layers": "WL_LandHorizontal",
   "armor_type": "AT_Air",

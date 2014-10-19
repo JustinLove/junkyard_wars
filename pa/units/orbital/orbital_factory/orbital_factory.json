@@ -6,7 +6,7 @@
   "build_metal_cost": 5400,
   "atrophy_rate": 90,
   "atrophy_cool_down": 15,
-  "wreckage_health_frac": 1,
+  "wreckage_health_frac": 5,
   "buildable_types": "Orbital & FactoryBuild",
   "enable_orbital_shell": true,
   "rolloff_dirs": [

@@ -10,7 +10,7 @@
   "system_velocity_multiplier": 15,
   "gravwell_velocity_multiplier": 3,
   "planetary_arrival_cooldown_time": 3,
-  "wreckage_health_frac": 1,
+  "wreckage_health_frac": 5,
   "armor_type": "AT_Orbital",
   "guard_radius": 50,
   "unit_types": [

@@ -90,7 +90,7 @@ module.exports = function(grunt) {
           'pa/units/sea/**/base_*.json'
         ],
         process: function(spec) {
-          spec.wreckage_health_frac = 1
+          spec.wreckage_health_frac = 5
         }
       },
       commander: {

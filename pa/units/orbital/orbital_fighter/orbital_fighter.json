@@ -5,7 +5,7 @@
   "build_metal_cost": 800,
   "max_health": 250,
   "gravwell_velocity_multiplier": 6,
-  "wreckage_health_frac": 1,
+  "wreckage_health_frac": 5,
   "spawn_layers": "WL_Orbital",
   "attachable": {
     "offsets": {

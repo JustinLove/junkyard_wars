@@ -3,7 +3,7 @@
   "description": "Base Orbital Structure Description - If you're seeing this, something is wrong in your structure.",
   "strategic_icon_priority": 2,
   "max_health": 1,
-  "wreckage_health_frac": 1,
+  "wreckage_health_frac": 5,
   "build_metal_cost": 1,
   "spawn_layers": "WL_Orbital",
   "armor_type": "AT_Orbital",

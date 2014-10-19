@@ -2,7 +2,7 @@
   "display_name": "Base Ship",
   "description": "Base Ship Description - If you're seeing this, something is wrong in your ship.",
   "strategic_icon_priority": 3,
-  "wreckage_health_frac": 1,
+  "wreckage_health_frac": 5,
   "spawn_layers": "WL_WaterSurface",
   "armor_type": "AT_Naval",
   "guard_radius": 50,

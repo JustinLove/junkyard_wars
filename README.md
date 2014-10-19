@@ -31,7 +31,7 @@ Currently in the exporatory phase; lots of tweaking and probably adding reclaim 
 - If a metal spot is reclaimed, the strategic icon stays, but you can't build on it anymore (unless you're the AI)
 - You must shadow (at least certain) features for changes in base_feature take effect.
 - The commander produces 1 metal to avoid a bug where you can't reclaim with zero metal income, zero metal in storage, and a metal demand.
-- Reclaiming a unit takes half the metal killing it, and the other half in wreckage - wreckage can never be a closed economy, even discounting weapon damage.
+- A unit has 1 part of it's metal in life, and wreckage_health_frac parts of it's metal in death.  Killing a unit with reclaim is easier with high wreckage fractions.
 
 ## Development
 
