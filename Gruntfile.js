@@ -245,6 +245,9 @@ module.exports = function(grunt) {
           acf.description = "The combat fabricator is fully armored and armed to provide build support in heavy fire situations."
           acf.max_health = com.max_health
           acf.navigation = com.navigation
+          acf.events.fired = {
+            "effect_spec": "/pa/effects/specs/default_muzzle_flash.pfx socket_muzzleFront"
+          }
           acf.tools = com.tools.filter(function(tool) {
             if (tool.spec_id == "/pa/tools/commander_build_arm/commander_build_arm.json") {
               tool.aim_bone = 'bone_turretBack'

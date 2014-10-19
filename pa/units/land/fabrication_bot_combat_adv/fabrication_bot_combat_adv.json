@@ -116,6 +116,9 @@
     "died": {
       "audio_cue": "/SE/Death/Bot",
       "effect_scale": 1.5
+    },
+    "fired": {
+      "effect_spec": "/pa/effects/specs/default_muzzle_flash.pfx socket_muzzleFront"
     }
   },
   "audio": {
