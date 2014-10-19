@@ -99,6 +99,7 @@ module.exports = function(grunt) {
         targets: [
           'pa/units/air/**/base_*.json',
           'pa/units/land/**/base_*.json',
+          'pa/units/land/land_barrier/land_barrier.json',
           'pa/units/orbital/**/defense_satellite.json',
           'pa/units/orbital/**/orbital_factory.json',
           'pa/units/orbital/**/orbital_fighter.json',
