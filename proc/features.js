@@ -1,14 +1,5 @@
 module.exports = function(media) {
   return {
-    mex: {
-      targets: [
-        'pa/units/land/metal_extractor/metal_extractor.json',
-        'pa/units/land/metal_extractor_adv/metal_extractor_adv.json'
-      ],
-      process: function(spec) {
-        delete spec.unit_types
-      }
-    },
     base_feature: {
       targets: [
         'pa/terrain/generic/base_feature.json'

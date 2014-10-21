@@ -109,6 +109,7 @@
       ]
     }
   ],
+  "buildable_types": "MetalProduction",
   "can_only_assist_with_buildable_items": true,
   "command_caps": [
     "ORDER_Move",
@@ -116,6 +117,7 @@
     "ORDER_Attack",
     "ORDER_Assist",
     "ORDER_Reclaim",
+    "ORDER_Build",
     "ORDER_Use"
   ]
 }

@@ -102,7 +102,25 @@ module.exports = function(grunt) {
           spec.production.metal = 1
           spec.storage.metal = 5000
         }
-      }
+      },
+      mex: {
+        targets: [
+          'pa/units/land/metal_extractor/metal_extractor.json'
+        ],
+        process: function(spec) {
+          delete spec.production
+          spec.display_name = "Metal Marker"
+          spec.description = "Useful to make a fabber visit and reclaim metal spots"
+        }
+      },
+      advmex: {
+        targets: [
+          'pa/units/land/metal_extractor_adv/metal_extractor_adv.json'
+        ],
+        process: function(spec) {
+          delete spec.unit_types
+        }
+      },
     }
   };
 

@@ -13,6 +13,7 @@ module.exports = function(media) {
         spec.fx_offsets = [fragments.fab_spray(rec.muzzle_bone)]
         spec.fx_offsets[0].offset = [0, -6, 0]
         spec.fx_offsets[0].orientation = [0, -67, 0]
+        spec.buildable_types = 'MetalProduction'
         spec.can_only_assist_with_buildable_items = true
         spec.command_caps = [
           "ORDER_Move",
@@ -20,6 +21,7 @@ module.exports = function(media) {
           "ORDER_Attack",
           "ORDER_Assist",
           "ORDER_Reclaim",
+          "ORDER_Build",
           "ORDER_Use"
         ]
       }

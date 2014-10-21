@@ -13,6 +13,7 @@ module.exports = function(media) {
         })
         spec.tools = spec.tools.concat(rec)
         spec.audio.loops.build = fragments.fab_audio()
+        spec.buildable_types = 'MetalProduction'
         spec.can_only_assist_with_buildable_items = true
         spec.command_caps = [
           "ORDER_Move",
@@ -20,6 +21,7 @@ module.exports = function(media) {
           "ORDER_Attack",
           "ORDER_Assist",
           "ORDER_Reclaim",
+          "ORDER_Build",
           "ORDER_Use"
         ]
       }

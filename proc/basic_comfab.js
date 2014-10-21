@@ -7,7 +7,7 @@ module.exports = function(media) {
       process: function(spec) {
         spec.build_metal_cost = 45
         spec.max_health = 10
-        spec.buildable_types = 'MetalProduction & Basic'
+        spec.buildable_types = 'MetalProduction'
         spec.description = 'Scavenger - Able to reclaim, and build metal extractors'
         spec.display_name = 'Junkyard Dog'
       }
