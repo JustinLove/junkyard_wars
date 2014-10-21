@@ -1,7 +1,7 @@
 {
   "base_spec": "/pa/units/land/base_vehicle/base_vehicle.json",
   "display_name": "!LOC(units:inferno.message):Inferno",
-  "description": "!LOC(units:flame_tank_short_ranged_heavy_armored_vehicle.message):Flame tank- Short ranged, heavy armored vehicle.",
+  "description": "Reclaim tank - short ranged, heavily armored vehicle with a strong reclaim lathe.",
   "max_health": 1000,
   "build_metal_cost": 225,
   "attachable": {

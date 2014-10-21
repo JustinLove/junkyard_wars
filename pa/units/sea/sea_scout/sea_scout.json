@@ -1,7 +1,7 @@
 {
   "base_spec": "/pa/units/sea/base_ship/base_ship.json",
   "display_name": "!LOC(units:sun_fish.message):Sun Fish",
-  "description": "!LOC(units:scout_light_weaponry_fast_speed.message):Scout- Light weaponry, fast speed.",
+  "description": "Scout - fast attack craft with light weaponary and reclaim lathe.",
   "max_health": 100,
   "build_metal_cost": 300,
   "spawn_layers": "WL_WaterSurface",

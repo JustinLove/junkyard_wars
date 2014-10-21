@@ -6,6 +6,7 @@ module.exports = function(media) {
         'pa/units/air/gunship/gunship.json'
       ],
       process: function(spec) {
+        spec.description = "Gunship - equipped with anti-ground weapons and a reclaim lathe."
         var rec = fragments.dup(spec.tools)
         rec.forEach(function(tool) {
           tool.spec_id = '/pa/units/air/gunship/gunship_build_arm.json'

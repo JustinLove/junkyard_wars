@@ -6,6 +6,7 @@ module.exports = function(media) {
         'pa/units/sea/sea_scout/sea_scout.json'
       ],
       process: function(spec) {
+        spec.description = "Scout - fast attack craft with light weaponary and reclaim lathe."
         var rec = fragments.dup(spec.tools[0])
         rec.spec_id = '/pa/units/sea/sea_scout/sea_scout_build_arm.json'
         spec.tools.push(rec)

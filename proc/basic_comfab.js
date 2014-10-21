@@ -8,7 +8,7 @@ module.exports = function(media) {
         spec.build_metal_cost = 45
         spec.max_health = 10
         spec.buildable_types = 'MetalProduction'
-        spec.description = 'Scavenger - Able to reclaim, and build metal extractors'
+        spec.description = 'Scavenger - Cheap, fast reclaim unit'
         spec.display_name = 'Junkyard Dog'
       }
     },

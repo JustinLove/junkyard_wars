@@ -9,6 +9,7 @@ module.exports = function(media) {
       cwd: media,
       dest: 'pa/units/air/air_scout/air_scout.json',
       process: function(spec, cf) {
+        spec.description = "Scout - fast scout armed only with a extremely lightweight reclaim lathe."
         spec.tools = [{spec_id:'/pa/units/air/air_scout/air_scout_build_arm.json'}]
         spec.fx_offsets = [fragments.fab_spray('bone_root')]
         spec.fx_offsets[0].offset = [0, -4, 0]

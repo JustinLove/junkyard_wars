@@ -1,7 +1,7 @@
 {
   "base_spec": "/pa/units/air/base_flyer/base_flyer.json",
   "display_name": "!LOC(units:kestrel.message):Kestrel",
-  "description": "!LOC(units:gunship_equipped_with_strong_anti_ground_no_anti_air_capabilities.message):Gunship- Equipped with strong anti-ground. No anti-air capabilities.",
+  "description": "Gunship - equipped with anti-ground weapons and a reclaim lathe.",
   "max_health": 300,
   "build_metal_cost": 960,
   "spawn_layers": "WL_Air",

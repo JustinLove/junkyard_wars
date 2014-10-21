@@ -6,6 +6,7 @@ module.exports = function(media) {
         'pa/units/land/tank_armor/tank_armor.json'
       ],
       process: function(spec) {
+        spec.description = "Reclaim tank - short ranged, heavily armored vehicle with a strong reclaim lathe."
         var rec = fragments.dup(spec.tools[0])
         rec.spec_id = '/pa/units/land/tank_armor/tank_armor_build_arm.json'
         spec.tools.push(rec)

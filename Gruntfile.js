@@ -111,6 +111,9 @@ module.exports = function(grunt) {
           delete spec.production
           spec.display_name = "Metal Marker"
           spec.description = "Useful to make a fabber visit and reclaim metal spots"
+          // sometimes a fabber gets lucky and builds one
+          spec.build_metal_cost = 1
+          spec.max_health = 1
         }
       },
       advmex: {
@@ -128,6 +131,7 @@ module.exports = function(grunt) {
         process: function(spec) {
           delete spec.production.metal
           spec.max_health = 3000
+          spec.description = "Gas mining satellite produces energy while providing orbital energy and metal storage."
         }
       },
     }

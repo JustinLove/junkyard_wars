@@ -1,7 +1,7 @@
 {
   "base_spec": "/pa/units/land/base_bot/base_bot.json",
   "display_name": "Junkyard Dog",
-  "description": "Scavenger - Able to reclaim, and build metal extractors",
+  "description": "Scavenger - Cheap, fast reclaim unit",
   "max_health": 10,
   "build_metal_cost": 45,
   "attachable": {

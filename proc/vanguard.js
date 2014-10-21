@@ -6,6 +6,7 @@ module.exports = function(media) {
         'pa/units/land/tank_heavy_armor/tank_heavy_armor.json'
       ],
       process: function(spec) {
+        spec.description = "Heavy tank with excellent armor, and a powerful weapon and reclaim lathe"
         var rec = fragments.dup(spec.tools[0])
         rec.spec_id = '/pa/units/land/tank_heavy_armor/tank_heavy_armor_build_arm.json'
         spec.tools.push(rec)
