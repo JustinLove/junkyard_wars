@@ -121,6 +121,15 @@ module.exports = function(grunt) {
           delete spec.unit_types
         }
       },
+      jig: {
+        targets: [
+          'pa/units/orbital/mining_platform/mining_platform.json'
+        ],
+        process: function(spec) {
+          delete spec.production.metal
+          spec.max_health = 3000
+        }
+      },
     }
   };
 
