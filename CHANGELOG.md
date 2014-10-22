@@ -1,5 +1,9 @@
 # Junkyard Wars
 
+## 1.0.1
+
+- Change forum url
+
 ## 1.0.0
 
 - Make mex buildable just for area-build and to help the AI
