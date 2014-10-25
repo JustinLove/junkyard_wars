@@ -6,24 +6,21 @@ module.exports = function(media) {
         'pa/units/air/gunship/gunship.json'
       ],
       process: function(spec) {
-        spec.description = "Gunship - equipped with anti-ground weapons and a reclaim lathe."
-        var rec = fragments.dup(spec.tools)
-        rec.forEach(function(tool) {
+        spec.description = "Gunship - reclaim raider."
+        spec.tools.forEach(function(tool) {
           tool.spec_id = '/pa/units/air/gunship/gunship_build_arm.json'
           spec.fx_offsets.push(fragments.fab_spray(tool.muzzle_bone))
         })
-        spec.tools = spec.tools.concat(rec)
         spec.audio.loops.build = fragments.fab_audio()
-        spec.buildable_types = 'MetalProduction & Basic'
+        spec.buildable_types = 'MetalProduction'
         spec.can_only_assist_with_buildable_items = true
         spec.command_caps = [
           "ORDER_Move",
           "ORDER_Patrol",
-          "ORDER_Attack",
           "ORDER_Assist",
           "ORDER_Reclaim",
-          "ORDER_Build",
-          "ORDER_Use"
+          "ORDER_Repair",
+          "ORDER_Build"
         ]
       }
     },
@@ -41,9 +38,10 @@ module.exports = function(media) {
         ba.pitch_rate = wep.pitch_rate
         ba.yaw_range = wep.yaw_range
         ba.yaw_rate = wep.yaw_rate
+        // power is double because game only seems to use one buildarm
         ba.construction_demand = {
-          metal: 20,
-          energy: 400
+          metal: 40,
+          energy: 800
         }
         return ba
       }

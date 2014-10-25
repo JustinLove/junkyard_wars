@@ -4,8 +4,8 @@
   "pitch_rate": 360,
   "max_range": 80,
   "construction_demand": {
-    "metal": 20,
-    "energy": 400
+    "metal": 40,
+    "energy": 800
   },
   "pitch_range": 100,
   "yaw_range": 360
