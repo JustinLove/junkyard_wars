@@ -7,7 +7,7 @@ This mod has a set of units designed for reclaim-oriented games.
 Units with weapons retain them, so you may need to hold fire if you want all the metal from a live target.
 
 - Basic Combat Fab is the Junkyard Dog - a cheap scavenger
-- Advanced Combat Fab is a basic builder designed for heavy fire situations - a commander in all but uber cannon and death weapon.
+- Advanced Combat Fab provides long-range auto-repair, manual-reclaim, and defense emplacements.  It also has radar equal to it's fab range, hold CTRL to see the range.
 - Inferno has a powerful short-range lathe for mopping up an enemy base and quickly mining metal spots.
 - Vanguard has a heavy reclaim tool; you won't like the power bill, but it usually doesn't need to operate for long.
 - Firefly has a very weak lathe for picking up small rocks and trees

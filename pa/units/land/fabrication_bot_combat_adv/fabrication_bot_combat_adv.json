@@ -1,8 +1,8 @@
 {
   "base_spec": "/pa/units/land/base_bot/base_bot.json",
   "display_name": "!LOC(units:advanced_combat_fabrication_bot.message):Advanced Combat Fabrication Bot",
-  "description": "The combat fabricator is fully armored and armed to provide build support in heavy fire situations.",
-  "max_health": 12500,
+  "description": "Provides long-range auto-repair, manual-reclaim, and defense emplacements.",
+  "max_health": 1500,
   "spawn_layers": "WL_LandHorizontal",
   "build_metal_cost": 6000,
   "attachable": {
@@ -19,7 +19,7 @@
       ]
     }
   },
-  "buildable_types": "CmdBuild | Defense & FabBuild | Recon & FabBuild",
+  "buildable_types": "CombatFabAdvBuild | Defense & FabBuild | Recon & FabBuild",
   "can_only_assist_with_buildable_items": true,
   "unit_types": [
     "UNITTYPE_Construction",
@@ -43,12 +43,12 @@
     "size": 1
   },
   "navigation": {
-    "type": "amphibious",
     "acceleration": 60,
     "brake": 60,
     "move_speed": 6,
+    "turn_in_place": false,
     "turn_speed": 90,
-    "turn_in_place": false
+    "type": "amphibious"
   },
   "physics": {
     "radius": 4,
@@ -63,6 +63,13 @@
           "channel": "sight",
           "shape": "capsule",
           "radius": 100
+        },
+        {
+          "channel": "radar",
+          "layer": "surface",
+          "radius": 260,
+          "shape": "capsule",
+          "uses_energy": false
         }
       ]
     }
@@ -80,32 +87,14 @@
   },
   "tools": [
     {
-      "spec_id": "/pa/tools/commander_build_arm/commander_build_arm.json",
+      "spec_id": "/pa/units/land/fabrication_bot_combat_adv/fabrication_bot_combat_adv_build_arm.json",
       "aim_bone": "bone_turretBack",
-      "muzzle_bone": "socket_muzzleBack",
       "record_index": 0
     },
     {
-      "spec_id": "/pa/units/commanders/base_commander/base_commander_tool_bullet_weapon.json",
+      "spec_id": "/pa/units/land/tank_light_laser/tank_light_laser_tool_weapon.json",
       "aim_bone": "bone_turretFront",
       "muzzle_bone": "socket_muzzleFront",
-      "primary_weapon": true,
-      "record_index": 1
-    },
-    {
-      "spec_id": "/pa/units/commanders/base_commander/base_commander_tool_aa_weapon.json",
-      "aim_bone": "bone_turretFront",
-      "muzzle_bone": "socket_muzzleFront",
-      "primary_weapon": false,
-      "show_range": false,
-      "record_index": 1
-    },
-    {
-      "spec_id": "/pa/units/commanders/base_commander/base_commander_tool_torpedo_weapon.json",
-      "aim_bone": "bone_turretFront",
-      "muzzle_bone": "socket_muzzleFront",
-      "primary_weapon": false,
-      "show_range": false,
       "record_index": 1
     }
   ],
