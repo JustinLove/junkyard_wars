@@ -9,6 +9,7 @@
   - [Wreckage](https://forums.uberent.com/threads/rel-server-wreckage.65404/)
   - [Adv Front Line Fabricator](https://forums.uberent.com/threads/rel-server-advanced-front-line-fabricator.65502/)
 - Adv comfab turned into a artillary grade fab unit.
+- Reduced base inferno damage
 
 ## 1.0.1
 

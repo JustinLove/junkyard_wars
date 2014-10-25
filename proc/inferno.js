@@ -45,6 +45,14 @@ module.exports = function(media) {
         }
         return ba
       }
+    },
+    inferno_ammo: {
+      targets: [
+        'pa/units/land/tank_armor/tank_armor_ammo.json'
+      ],
+      process: function(spec) {
+        spec.damage = 40
+      }
     }
   }
 }

@@ -8,7 +8,7 @@ Units with weapons retain them, so you may need to hold fire if you want all the
 
 - Basic Combat Fab is the Junkyard Dog - a cheap scavenger
 - Advanced Combat Fab provides long-range auto-repair, manual-reclaim, and defense emplacements.  It also has radar equal to it's fab range, hold CTRL to see the range.
-- Inferno has a powerful short-range lathe for mopping up an enemy base and quickly mining metal spots.
+- Inferno has a powerful short-range lathe for mopping up an enemy base and quickly mining metal spots.  However, it's flamethrower is less effective than vanilla.
 - Vanguard has a heavy reclaim tool; you won't like the power bill, but it usually doesn't need to operate for long.
 - Firefly has a very weak lathe for picking up small rocks and trees
 - Gunship has a moderate lathe for reclaim raiding.
