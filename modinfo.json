@@ -2,12 +2,12 @@
   "author": "wondible",
   "build": "73939",
   "context": "server",
-  "date": "2014/10/21",
+  "date": "2014/10/24",
   "description": "All metal comes via reclaim.",
   "display_name": "Junkyard Wars",
   "forum": "https://forums.uberent.com/threads/rel-server-junkyards-wars.65367/",
   "identifier": "com.wondible.pa.junkyard_wars",
   "signature": "not yet implemented",
-  "version": "1.0.1"
+  "version": "2.0.0"
 }
 

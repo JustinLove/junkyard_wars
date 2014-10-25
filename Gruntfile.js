@@ -78,66 +78,9 @@ module.exports = function(grunt) {
       },
     },
     proc: {
-      wreckage: {
-        targets: [
-          'pa/units/air/**/base_*.json',
-          'pa/units/land/**/base_*.json',
-          'pa/units/land/land_barrier/land_barrier.json',
-          'pa/units/orbital/**/defense_satellite.json',
-          'pa/units/orbital/**/orbital_factory.json',
-          'pa/units/orbital/**/orbital_fighter.json',
-          'pa/units/orbital/**/base_*.json',
-          'pa/units/sea/**/base_*.json'
-        ],
-        process: function(spec) {
-          spec.wreckage_health_frac = 5
-        }
-      },
-      commander: {
-        targets: [
-          'pa/units/commanders/base_commander/base_commander.json'
-        ],
-        process: function(spec) {
-          spec.wreckage_health_frac = 1
-          spec.production.metal = 1
-          spec.storage.metal = 5000
-        }
-      },
-      mex: {
-        targets: [
-          'pa/units/land/metal_extractor/metal_extractor.json'
-        ],
-        process: function(spec) {
-          delete spec.production
-          spec.display_name = "Metal Marker"
-          spec.description = "Useful to make a fabber visit and reclaim metal spots"
-          // sometimes a fabber gets lucky and builds one
-          spec.build_metal_cost = 1
-          spec.max_health = 1
-        }
-      },
-      advmex: {
-        targets: [
-          'pa/units/land/metal_extractor_adv/metal_extractor_adv.json'
-        ],
-        process: function(spec) {
-          delete spec.unit_types
-        }
-      },
-      jig: {
-        targets: [
-          'pa/units/orbital/mining_platform/mining_platform.json'
-        ],
-        process: function(spec) {
-          delete spec.production.metal
-          spec.max_health = 3000
-          spec.description = "Gas mining satellite produces energy while providing orbital energy and metal storage."
-        }
-      },
     }
   };
 
-  merge(config.proc, require('./proc/features')(media))
   merge(config.proc, require('./proc/basic_comfab')(media))
   merge(config.proc, require('./proc/adv_comfab')(media))
   merge(config.proc, require('./proc/inferno')(media))
