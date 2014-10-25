@@ -6,13 +6,13 @@ module.exports = function(media) {
         'pa/units/air/gunship/gunship.json'
       ],
       process: function(spec) {
-        spec.description = "Gunship - reclaim raider."
+        spec.description = "Gunship - reclaim raider that can build teleporters."
         spec.tools.forEach(function(tool) {
           tool.spec_id = '/pa/units/air/gunship/gunship_build_arm.json'
           spec.fx_offsets.push(fragments.fab_spray(tool.muzzle_bone))
         })
         spec.audio.loops.build = fragments.fab_audio()
-        spec.buildable_types = 'MetalProduction'
+        spec.buildable_types = 'MetalProduction | Teleporter'
         spec.can_only_assist_with_buildable_items = true
         spec.command_caps = [
           "ORDER_Move",

@@ -15,7 +15,7 @@ module.exports = function(media) {
         spec.fx_offsets[0].offset = [0, -4, 0]
         spec.fx_offsets[0].orientation = [0, -45, 0]
         spec.audio.loops.build = fragments.fab_audio()
-        spec.buildable_types = 'MetalProduction & Basic'
+        spec.buildable_types = 'MetalProduction & Basic | Recon & Basic - Orbital'
         spec.can_only_assist_with_buildable_items = true
         spec.command_caps.push('ORDER_Reclaim', 'ORDER_Build')
         return spec

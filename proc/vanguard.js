@@ -6,7 +6,7 @@ module.exports = function(media) {
         'pa/units/land/tank_heavy_armor/tank_heavy_armor.json'
       ],
       process: function(spec) {
-        spec.description = "Heavy tank with excellent armor, and a powerful weapon and reclaim lathe"
+        spec.description = "Heavy tank with excellent armor and a powerful reclaim lathe"
         spec.tools[0].spec_id = '/pa/units/land/tank_heavy_armor/tank_heavy_armor_build_arm.json'
         spec.audio.loops.build = fragments.fab_audio()
         spec.fx_offsets = [fragments.fab_spray(spec.tools[0].muzzle_bone)]
