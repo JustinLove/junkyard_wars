@@ -1,5 +1,9 @@
 # Junkyard Wars
 
+## 2.0.1
+
+- Add category tags to modinfo
+
 ## 2.0.0
 
 - Extracted several major aspects into separate mods.  This mod only has modified units.
