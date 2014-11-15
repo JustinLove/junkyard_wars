@@ -1,5 +1,10 @@
 # Junkyard Wars
 
+## 2.1.0
+
+- Made junkyard dog (basic comfab) select as a fabber
+- Fix category typo
+
 ## 2.0.1
 
 - Add category tags to modinfo
