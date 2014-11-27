@@ -1,5 +1,9 @@
 # Junkyard Wars
 
+## 2.1.1
+
+- Fix for 75539 and a few pte earlier: some modified units listed Jig in build bar.
+
 ## 2.1.0
 
 - Made junkyard dog (basic comfab) select as a fabber

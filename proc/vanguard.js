@@ -10,7 +10,7 @@ module.exports = function(media) {
         spec.tools[0].spec_id = '/pa/units/land/tank_heavy_armor/tank_heavy_armor_build_arm.json'
         spec.audio.loops.build = fragments.fab_audio()
         spec.fx_offsets = [fragments.fab_spray(spec.tools[0].muzzle_bone)]
-        spec.buildable_types = 'MetalProduction | Wall'
+        spec.buildable_types = 'MetalProduction - Orbital | Wall'
         spec.can_only_assist_with_buildable_items = true
         spec.command_caps = [
           "ORDER_Move",

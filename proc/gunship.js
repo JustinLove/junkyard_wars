@@ -12,7 +12,7 @@ module.exports = function(media) {
           spec.fx_offsets.push(fragments.fab_spray(tool.muzzle_bone))
         })
         spec.audio.loops.build = fragments.fab_audio()
-        spec.buildable_types = 'MetalProduction | Teleporter'
+        spec.buildable_types = 'MetalProduction - Orbital | Teleporter'
         spec.can_only_assist_with_buildable_items = true
         spec.command_caps = [
           "ORDER_Move",
