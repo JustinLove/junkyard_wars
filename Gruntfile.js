@@ -50,7 +50,7 @@ module.exports = function(grunt) {
         ],
       },
     },
-    clean: [modPath],
+    clean: ['pa', modPath],
     jsonlint: {
       all: {
         src: [
@@ -87,7 +87,6 @@ module.exports = function(grunt) {
   merge(config.proc, require('./proc/vanguard')(media))
   merge(config.proc, require('./proc/gunship')(media))
   merge(config.proc, require('./proc/firefly')(media))
-  merge(config.proc, require('./proc/sunfish')(media))
 
   grunt.initConfig(config)
 

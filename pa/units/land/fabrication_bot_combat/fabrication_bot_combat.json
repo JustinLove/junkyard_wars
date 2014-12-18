@@ -28,7 +28,9 @@
     "UNITTYPE_Land",
     "UNITTYPE_Basic",
     "UNITTYPE_FactoryBuild",
-    "UNITTYPE_Fabber"
+    "UNITTYPE_CannonBuildable",
+    "UNITTYPE_Fabber",
+    "UNITTYPE_Naval"
   ],
   "command_caps": [
     "ORDER_Move",

@@ -1,5 +1,11 @@
 # Junkyard Wars
 
+## 2.2.0
+
+- Update unit specs to 76456
+- Remove Sunfish
+- Junkyard Dog and Adv. Comfab are buildable by naval factory
+
 ## 2.1.1
 
 - Fix for 75539 and a few pte earlier: some modified units listed Jig in build bar.

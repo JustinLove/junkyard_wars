@@ -41,6 +41,7 @@ module.exports = function(media) {
           muzzle_bone: 'socket_muzzleFront',
           record_index: 1
         })
+        acf.unit_types.push('UNITTYPE_Naval')
       }
     },
     adv_comfab_buildarm: {

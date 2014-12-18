@@ -1,14 +1,14 @@
 {
   "author": "wondible",
-  "build": "75539",
+  "build": "76456",
   "category": ["metal", "units", "reclaim"],
   "context": "server",
-  "date": "2014/11/26",
+  "date": "2014/12/18",
   "description": "Several modified units for reclaim-oriented games.",
   "display_name": "Junkyard Wars",
   "forum": "https://forums.uberent.com/threads/rel-server-junkyards-wars.65367/",
   "identifier": "com.wondible.pa.junkyard_wars",
   "signature": "not yet implemented",
-  "version": "2.1.1"
+  "version": "2.2.0"
 }
 

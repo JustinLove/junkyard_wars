@@ -10,7 +10,7 @@ module.exports = function(media) {
         spec.buildable_types = 'MetalProduction & Basic'
         spec.description = 'Scavenger - Cheap, fast reclaim unit'
         spec.display_name = 'Junkyard Dog'
-        spec.unit_types.push('UNITTYPE_Fabber')
+        spec.unit_types.push('UNITTYPE_Fabber', 'UNITTYPE_Naval')
       }
     },
     basic_comfab_tool: {
