@@ -1,5 +1,9 @@
 # Junkyard Wars
 
+## 2.3.0
+
+- Support Server Mod Help Chat
+
 ## 2.2.0
 
 - Update unit specs to 76456

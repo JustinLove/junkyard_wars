@@ -1,0 +1,12 @@
+{
+  "topics": {
+    "junkyard wars": "Several units modified for reclaim-oriented games - combat fabs, heavy tanks, firefly, and guship",
+    "junkyard dog": "Basic Combat Fab is the Junkyard Dog - a cheap scavenger which is also buildable by naval factories.",
+    "adv comfab": "Provides long-range auto-repair, manual-reclaim, and defense emplacements.  It also has radar equal to it's fab range, hold CTRL to see the range.  Buildable by naval factories.",
+    "inferno": "Has a powerful short-range lathe for mopping up an enemy base and quickly mining metal spots.  However, it's flamethrower is less effective than vanilla.",
+    "vanguard": "Has a heavy reclaim tool; you won't like the power bill, but it usually doesn't need to operate for long. It can also build walls to further protect units units behind it.",
+    "firefly": "Has a very weak lathe for picking up small rocks and trees, and can build radar for remote reconnaissance (albeit very, very slowly)",
+    "gunship": "Has a moderate lathe for reclaim raiding, and can build teleporters to call in reinforcements.",
+    "reclaim bugs": "Reclaim rate is limited by build rate; if your metal stalls you'll need to stop some things to let scavengers run again."
+  }
+}
