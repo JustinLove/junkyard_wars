@@ -3,6 +3,7 @@
 ## 2.3.0
 
 - Support Server Mod Help Chat
+- Support Mod Help Player Guide
 
 ## 2.2.0
 

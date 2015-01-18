@@ -1,4 +1,7 @@
 {
+  "articles": {
+    "Junkyard Wars": "coui://com.wondible.pa.junkyard_wars/junkyard_wars.html"
+  },
   "topics": {
     "junkyard wars": "Several units modified for reclaim-oriented games - combat fabs, heavy tanks, firefly, and guship",
     "junkyard dog": "Basic Combat Fab is the Junkyard Dog - a cheap scavenger which is also buildable by naval factories.",
