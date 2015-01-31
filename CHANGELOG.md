@@ -1,5 +1,9 @@
 # Junkyard Wars
 
+## 2.3.1
+
+- Update for 77443
+
 ## 2.3.0
 
 - Support Server Mod Help Chat
