@@ -1,5 +1,9 @@
 # Junkyard Wars
 
+## 2.3.2
+
+- Update adv comfab with mine sight
+
 ## 2.3.1
 
 - Update for 77443

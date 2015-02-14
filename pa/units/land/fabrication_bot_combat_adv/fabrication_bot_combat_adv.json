@@ -73,6 +73,12 @@
           "radius": 100
         },
         {
+          "layer": "mine",
+          "channel": "sight",
+          "shape": "capsule",
+          "radius": 100
+        },
+        {
           "channel": "radar",
           "layer": "surface",
           "radius": 260,
