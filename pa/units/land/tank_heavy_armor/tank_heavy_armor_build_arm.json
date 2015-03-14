@@ -7,6 +7,7 @@
     "metal": 200,
     "energy": 20000
   },
+  "can_only_assist_with_buildable_items": true,
   "pitch_range": 45,
   "yaw_range": 180
 }

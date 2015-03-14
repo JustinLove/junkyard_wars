@@ -6,5 +6,6 @@
   "construction_demand": {
     "energy": 200,
     "metal": 10
-  }
+  },
+  "can_only_assist_with_buildable_items": true
 }

@@ -3,7 +3,7 @@
   "display_name": "!LOC(units:kestrel.message):Kestrel",
   "description": "Gunship - reclaim raider that can build teleporters.",
   "max_health": 350,
-  "build_metal_cost": 720,
+  "build_metal_cost": 600,
   "spawn_layers": "WL_Air",
   "unit_types": [
     "UNITTYPE_Gunship",

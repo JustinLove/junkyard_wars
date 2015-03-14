@@ -19,7 +19,6 @@
     }
   },
   "buildable_types": "MetalProduction & Basic",
-  "can_only_assist_with_buildable_items": true,
   "unit_types": [
     "UNITTYPE_Construction",
     "UNITTYPE_Bot",
