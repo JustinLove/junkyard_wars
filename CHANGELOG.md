@@ -1,5 +1,11 @@
 # Junkyard Wars
 
+## 2.3.4
+
+- PA changes for 82293:
+- Inferno ammo
+- Help topic prelude
+
 ## 2.3.3
 
 - Update for 79317
